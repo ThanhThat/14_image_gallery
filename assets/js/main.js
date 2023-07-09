@@ -21,11 +21,21 @@ $(".close").addEventListener("click", clickBtnCloseHandle);
 
 function setCurrentIndex(index) {
   currentIndex = index;
-  $(".img-display").classList.add("open");
   showImg();
 }
 
 function showImg() {
+  $(".img-display").animate(
+    {
+      opacity: [0, 1],
+      transform: "translateY(0)",
+      // visibility: "visible",
+    },
+    {
+      duration: 750,
+      fill: "forwards",
+    }
+  );
   $(".img-wrapper > img").src = imgList[currentIndex].querySelector("img").src;
 }
 
@@ -40,5 +50,14 @@ function clickNextHandle() {
 }
 
 function clickBtnCloseHandle() {
-  $(".img-display").classList.remove("open");
+  $(".img-display").animate(
+    {
+      transform: "translateY(-200%)",
+      opacity: [1, 0],
+    },
+    {
+      duration: 400,
+      fill: "forwards",
+    }
+  );
 }
